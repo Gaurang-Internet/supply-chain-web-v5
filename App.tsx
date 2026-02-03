@@ -14,13 +14,28 @@ import {
 import { MOCK_ARTICLES, MOCK_COMPANIES, MOCK_PEOPLE, SECTORS } from './constants';
 import { Article } from './types';
 import { Zap, Layers, Building2, UserCircle, Target, TrendingUp, ChevronDown, ChevronUp, ArrowUpRight, Tag as TagIcon, Sparkles, Clock } from 'lucide-react';
+console.log('App.tsx module loading...');
 
-const GEMINI_API_KEY = (process.env.API_KEY || '').includes('PLACEHOLDER') ? '' : (process.env.API_KEY || '');
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+const GEMINI_API_KEY = (typeof process !== 'undefined' && process.env && process.env.API_KEY) ?
+  (process.env.API_KEY.includes('PLACEHOLDER') ? '' : process.env.API_KEY) : '';
+
+// Lazy initialization of AI to prevent top-level crashes
+let aiInstance: any = null;
+const getAI = () => {
+  if (!aiInstance && GEMINI_API_KEY) {
+    try {
+      aiInstance = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+    } catch (e) {
+      console.error('Failed to initialize AI:', e);
+    }
+  }
+  return aiInstance;
+};
 
 type View = 'home' | 'article' | 'sector' | 'company' | 'person';
 
 const App: React.FC = () => {
+  console.log('App component rendering...');
   const [activeView, setActiveView] = useState<View>('home');
   const [activeId, setActiveId] = useState<string | null>(null);
   const [articles, setArticles] = useState<Article[]>(MOCK_ARTICLES);
@@ -61,11 +76,16 @@ const App: React.FC = () => {
   };
 
   const generateNewSignal = async (context?: string) => {
+    const ai = getAI();
+    if (!ai) {
+      console.warn('AI not initialized - missing API key');
+      return;
+    }
     setIsGenerating(true);
     try {
       const prompt = `Generate a high-density supply chain intelligence news story. Topic context: ${context || 'Global Logistics'}. Focus on operational impact. VERY IMPORTANT: The body text MUST be under 60 words total and highly concise. Format as JSON Article.`;
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-1.5-flash",
         contents: prompt,
         config: {
           responseMimeType: "application/json",
