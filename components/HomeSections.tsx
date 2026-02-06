@@ -2,16 +2,16 @@
 import React from 'react';
 import { Article, Company, Person, Subscriber } from '../types';
 import FeedItem from './FeedItem';
-import { 
-  ArrowRight, 
-  ChevronLeft, 
-  ChevronRight, 
-  Globe, 
-  Truck, 
-  Package, 
-  Factory, 
-  Landmark, 
-  Cpu, 
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Globe,
+  Truck,
+  Package,
+  Factory,
+  Landmark,
+  Cpu,
   Leaf,
   ArrowUpRight,
   Search
@@ -19,46 +19,46 @@ import {
 import { MOCK_SUBSCRIBERS } from '../constants';
 
 export const Section1Subscribe: React.FC = () => (
-  <section className="pt-20 pb-20 relative overflow-hidden border-b border-gray-100">
+  <section className="pt-10 pb-20 relative overflow-hidden border-b border-gray-100">
     <div className="max-w-5xl relative z-10">
       <h1 className="text-5xl md:text-[4.5rem] font-serif font-bold tracking-tighter text-gray-900 mb-8 leading-tight">
         <span className="text-blue-700">Driving the Future of Global Supply Chains</span>
       </h1>
-      
+
       <p className="text-2xl md:text-3xl text-gray-600 font-serif leading-tight italic mb-12 max-w-4xl">
         Get the latest news, insights, and expert analysis on logistics, trade, technology, and strategies shaping resilient, sustainable supply chains.
       </p>
 
       <div className="space-y-10">
         <div className="flex flex-col sm:flex-row gap-0 group max-w-2xl">
-          <input 
-            type="email" 
-            placeholder="Professional email address" 
+          <input
+            type="email"
+            placeholder="Professional email address"
             className="flex-grow px-6 py-5 bg-white border border-gray-200 border-r-0 outline-none focus:border-blue-600 transition-all text-base font-medium"
           />
           <button className="bg-blue-700 text-white px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:bg-black transition-all shadow-lg active:scale-95 whitespace-nowrap">
             SUBSCRIBE NOW
           </button>
         </div>
-        
+
         <div className="flex items-center gap-4">
-           <div className="flex -space-x-3 overflow-hidden">
-              {MOCK_SUBSCRIBERS.map((sub) => (
-                <div key={sub.id} className="inline-block h-10 w-10 rounded-full ring-4 ring-white bg-gray-100 flex items-center justify-center text-[10px] font-bold border border-gray-200 shadow-sm overflow-hidden">
-                  <span className="text-gray-600">{sub.initials}</span>
-                </div>
-              ))}
-              <div className="inline-block h-10 w-10 rounded-full ring-4 ring-white bg-blue-50 flex items-center justify-center text-[11px] font-bold text-blue-600 border border-blue-100 shadow-sm">
-                +50k
+          <div className="flex -space-x-3 overflow-hidden">
+            {MOCK_SUBSCRIBERS.map((sub) => (
+              <div key={sub.id} className="inline-block h-10 w-10 rounded-full ring-4 ring-white bg-gray-100 flex items-center justify-center text-[10px] font-bold border border-gray-200 shadow-sm overflow-hidden">
+                <span className="text-gray-600">{sub.initials}</span>
               </div>
-           </div>
-           <p className="text-[13px] font-medium text-gray-500 uppercase tracking-widest leading-relaxed">
-             Join <span className="text-gray-900 font-bold">50k+ decision-makers</span> tracking India’s supply chain signals.
-           </p>
+            ))}
+            <div className="inline-block h-10 w-10 rounded-full ring-4 ring-white bg-blue-50 flex items-center justify-center text-[11px] font-bold text-blue-600 border border-blue-100 shadow-sm">
+              +50k
+            </div>
+          </div>
+          <p className="text-[13px] font-medium text-gray-500 uppercase tracking-widest leading-relaxed">
+            Join <span className="text-gray-900 font-bold">50k+ decision-makers</span> tracking India’s supply chain signals.
+          </p>
         </div>
       </div>
     </div>
-    
+
     <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-50/20 to-transparent pointer-events-none -z-10 skew-x-12 transform translate-x-32"></div>
   </section>
 );
@@ -108,10 +108,10 @@ export const TrendingAndMostRead: React.FC<{
       <div className="lg:col-span-8">
         <div className="flex flex-col">
           {trending.map((article, idx) => (
-            <FeedItem 
-              key={article.id} 
-              article={article} 
-              isLead={idx === 0} 
+            <FeedItem
+              key={article.id}
+              article={article}
+              isLead={idx === 0}
               onNavigate={onNavigate}
               density="full"
             />
@@ -163,14 +163,14 @@ export const ExploreSectors: React.FC<{
             Sectors in Focus
           </h2>
         </div>
-        <button 
+        <button
           onClick={() => onSectorSelect('All')}
           className="text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400 hover:text-blue-700 transition-all flex items-center gap-2 group border-b-2 border-transparent hover:border-blue-700 pb-2"
         >
           Browse All Sectors <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-gray-100">
         {displayedSectors.map((sectorName, idx) => {
           const sectorArticles = articles.filter(a => a.sectors.includes(sectorName));
@@ -178,14 +178,14 @@ export const ExploreSectors: React.FC<{
           const leadArticle = hasArticles ? sectorArticles[0] : null;
           // Only show up to 2 secondary stories (total 3 stories per card)
           const subArticles = hasArticles ? sectorArticles.slice(1, 3) : [];
-          
+
           return (
-            <div 
-              key={sectorName} 
+            <div
+              key={sectorName}
               className={`flex flex-col p-10 bg-white transition-all duration-300 ${idx !== displayedSectors.length - 1 ? 'lg:border-r' : ''} ${idx % 2 === 0 ? 'md:border-r lg:border-r' : ''} border-gray-100`}
             >
               <div className="flex items-center justify-between mb-8 group/header">
-                <button 
+                <button
                   onClick={() => onSectorSelect(sectorName)}
                   className="text-2xl font-serif font-bold text-gray-900 group-hover/header:text-blue-700 transition-colors"
                 >
@@ -193,24 +193,24 @@ export const ExploreSectors: React.FC<{
                 </button>
                 <ArrowUpRight size={16} className="text-gray-200 group-hover/header:text-blue-600 transition-all opacity-0 group-hover/header:opacity-100" />
               </div>
-              
+
               {leadArticle ? (
                 <div className="flex flex-col gap-6 flex-grow">
                   <div className="group/lead space-y-4">
                     {leadArticle.imageUrl && (
-                      <div 
-                        className="aspect-[16/10] w-full bg-gray-100 overflow-hidden cursor-pointer rounded-sm group-hover/lead:shadow-lg transition-all duration-500" 
+                      <div
+                        className="aspect-[16/10] w-full bg-gray-100 overflow-hidden cursor-pointer rounded-sm group-hover/lead:shadow-lg transition-all duration-500"
                         onClick={() => onNavigate(leadArticle.id)}
                       >
-                        <img 
-                          src={leadArticle.imageUrl} 
-                          className="w-full h-full object-cover grayscale group-hover/lead:grayscale-0 transition-all duration-1000 transform group-hover/lead:scale-110" 
-                          alt="" 
+                        <img
+                          src={leadArticle.imageUrl}
+                          className="w-full h-full object-cover grayscale group-hover/lead:grayscale-0 transition-all duration-1000 transform group-hover/lead:scale-110"
+                          alt=""
                         />
                       </div>
                     )}
                     <div className="space-y-2">
-                      <h4 
+                      <h4
                         className="text-xl font-serif font-bold leading-[1.2] text-gray-900 group-hover/lead:text-blue-800 transition-colors cursor-pointer"
                         onClick={() => onNavigate(leadArticle.id)}
                       >
@@ -226,9 +226,9 @@ export const ExploreSectors: React.FC<{
 
                   <div className="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-5">
                     {subArticles.map(sa => (
-                      <div 
-                        key={sa.id} 
-                        className="group/item cursor-pointer flex items-start gap-3" 
+                      <div
+                        key={sa.id}
+                        className="group/item cursor-pointer flex items-start gap-3"
                         onClick={() => onNavigate(sa.id)}
                       >
                         <div className="w-1.5 h-1.5 rounded-full bg-blue-100 mt-2 flex-shrink-0 group-hover/item:bg-blue-600 transition-all group-hover/item:scale-125"></div>
@@ -237,8 +237,8 @@ export const ExploreSectors: React.FC<{
                         </p>
                       </div>
                     ))}
-                    
-                    <button 
+
+                    <button
                       onClick={() => onSectorSelect(sectorName)}
                       className="mt-2 text-[11px] font-black uppercase tracking-widest text-blue-600 hover:text-black flex items-center gap-2 transition-colors border-t border-gray-50 pt-4"
                     >
@@ -278,7 +278,7 @@ export const CompanyCoverageGrid: React.FC<{
   onCompanySelect: (c: string) => void;
   onNavigate: (id: string) => void;
 }> = ({ companies, articles, onCompanySelect, onNavigate }) => {
-  const activeCompanies = companies.filter(company => 
+  const activeCompanies = companies.filter(company =>
     articles.some(a => a.entities.some(e => e.name === company.name))
   ).slice(0, 6);
 
@@ -290,7 +290,7 @@ export const CompanyCoverageGrid: React.FC<{
         <h3 className="text-3xl font-serif font-bold text-gray-900">
           Recently Covered Companies
         </h3>
-        <button 
+        <button
           onClick={() => onCompanySelect('All')}
           className="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-black flex items-center gap-1 group"
         >
@@ -302,7 +302,7 @@ export const CompanyCoverageGrid: React.FC<{
           const companyArticles = articles.filter(a => a.entities.some(e => e.name === company.name));
           return (
             <div key={company.id} className="flex flex-col h-full bg-white p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-              <div 
+              <div
                 className="flex justify-between items-end mb-6 cursor-pointer group"
                 onClick={() => onCompanySelect(company.name)}
               >
@@ -314,10 +314,10 @@ export const CompanyCoverageGrid: React.FC<{
                   <div key={article.id} className="cursor-pointer group/item" onClick={() => onNavigate(article.id)}>
                     {i === 0 && article.imageUrl && (
                       <div className="aspect-video mb-4 overflow-hidden bg-gray-200">
-                        <img 
-                          src={article.imageUrl} 
-                          alt="" 
-                          className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-700" 
+                        <img
+                          src={article.imageUrl}
+                          alt=""
+                          className="w-full h-full object-cover grayscale group-hover/item:grayscale-0 transition-all duration-700"
                         />
                       </div>
                     )}
@@ -360,13 +360,13 @@ export const PeopleSlider: React.FC<{
               PEOPLE IN THE NEWS
             </h3>
             <div className="flex gap-2">
-              <button 
+              <button
                 onClick={() => scroll('left')}
                 className="p-3 bg-white border border-gray-100 hover:border-blue-600 transition-all rounded-full shadow-sm text-gray-400 hover:text-blue-600 active:scale-90"
               >
                 <ChevronLeft size={18} />
               </button>
-              <button 
+              <button
                 onClick={() => scroll('right')}
                 className="p-3 bg-white border border-gray-100 hover:border-blue-600 transition-all rounded-full shadow-sm text-gray-400 hover:text-blue-600 active:scale-90"
               >
@@ -374,37 +374,37 @@ export const PeopleSlider: React.FC<{
               </button>
             </div>
           </div>
-          
-          <button 
+
+          <button
             onClick={() => onPersonSelect('All')}
             className="text-[11px] font-black text-gray-400 hover:text-blue-700 flex items-center gap-3 transition-colors uppercase tracking-[0.2em] group border-b border-transparent hover:border-blue-700 pb-1 self-start md:self-center"
           >
             All People <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
-        
-        <div 
+
+        <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto pb-10 no-scrollbar snap-x snap-mandatory touch-pan-x cursor-grab active:cursor-grabbing"
         >
           {people.map(person => {
             const initials = person.name.split(' ').map(n => n[0]).join('').toUpperCase();
             const relatedArticle = articles.find(a => a.entities.some(e => e.name === person.name || e.name === person.company)) || articles[0];
-            
+
             return (
-              <div 
-                key={person.id} 
+              <div
+                key={person.id}
                 className="flex-shrink-0 w-full md:w-[calc(33.333%-16px)] snap-start bg-white border border-gray-200 rounded-[2px] shadow-[0_2px_15px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col relative"
               >
                 {/* Accent bar mirroring the design provided */}
                 <div className="absolute top-0 left-0 w-full h-[3px] bg-orange-100/60"></div>
-                
+
                 <div className="p-8 pb-6 flex items-start gap-5">
                   <div className="w-16 h-16 rounded-full bg-orange-50 border border-orange-100/50 flex items-center justify-center text-xl font-bold text-orange-400 flex-shrink-0 font-serif">
                     {initials}
                   </div>
                   <div className="pt-1">
-                    <button 
+                    <button
                       onClick={() => onPersonSelect(person.name)}
                       className="text-2xl font-serif font-bold text-gray-900 hover:text-blue-700 transition-colors block text-left leading-tight mb-1"
                     >
@@ -419,19 +419,19 @@ export const PeopleSlider: React.FC<{
                 <div className="px-8 pb-10 flex-grow">
                   <div className="pt-6 border-t border-gray-50 flex gap-4 group/item">
                     {relatedArticle.imageUrl && (
-                      <div 
+                      <div
                         className="w-24 h-16 bg-gray-100 overflow-hidden rounded-sm flex-shrink-0 cursor-pointer"
                         onClick={() => onNavigate(relatedArticle.id)}
                       >
-                        <img 
-                          src={relatedArticle.imageUrl} 
-                          alt="" 
-                          className="w-full h-full object-cover grayscale opacity-80 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-700" 
+                        <img
+                          src={relatedArticle.imageUrl}
+                          alt=""
+                          className="w-full h-full object-cover grayscale opacity-80 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-700"
                         />
                       </div>
                     )}
                     <div className="space-y-1.5 overflow-hidden">
-                      <h5 
+                      <h5
                         className="text-[14px] font-bold text-gray-700 leading-snug cursor-pointer group-hover/item:text-blue-700 transition-colors line-clamp-2"
                         onClick={() => onNavigate(relatedArticle.id)}
                       >

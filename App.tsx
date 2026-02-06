@@ -344,7 +344,7 @@ const App: React.FC = () => {
         onNavigate={navigateTo}
       />
       {/* Reduced mobile margin to mt-[44px] for the compact header target */}
-      <main className="flex-grow mt-[44px] md:mt-[112px]">
+      <main className="flex-grow mt-[22px] md:mt-[56px]">
         {activeView === 'home' ? <HomeView /> :
           activeView === 'article' ? <ArticleView id={activeId || ''} /> :
             <ListingView type={activeView} id={activeId || ''} />}
