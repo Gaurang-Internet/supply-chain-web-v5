@@ -156,9 +156,9 @@ export const ExploreSectors: React.FC<{
     <section className="py-24 border-t border-gray-100 bg-white">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-4">
         <div className="flex flex-col gap-2">
-          <span className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-700">
+          {/* <span className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-700">
             VERTICAL INTELLIGENCE
-          </span>
+          </span> */}
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 tracking-tight leading-none">
             Sectors in Focus
           </h2>
@@ -354,7 +354,10 @@ export const PeopleSlider: React.FC<{
   return (
     <section className="py-24 border-y border-gray-100 bg-[#f9f9f9] -mx-8 px-8 overflow-hidden">
       <div className="max-w-[1400px] mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-8">
+        <div className="flex items-center justify-between mb-12 border-b border-gray-100 pb-4">
+          <h3 className="text-[13px] font-bold uppercase tracking-[0.2em] text-gray-600 font-serif">
+            PEOPLE IN THE NEWS
+          </h3>
           <div className="flex gap-2">
             <button
               onClick={() => scroll('left')}
